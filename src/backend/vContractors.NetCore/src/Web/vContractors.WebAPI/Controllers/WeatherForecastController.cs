@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using vContractors.Application.Interfaces;
 
 namespace vContractors.WebAPI.Controllers;
 
@@ -11,10 +12,14 @@ public class WeatherForecastController : ControllerBase
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
+    private readonly IUserService _userService;
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(
+        IUserService userService,
+        ILogger<WeatherForecastController> logger)
     {
+        _userService = userService;
         _logger = logger;
     }
 
@@ -28,5 +33,12 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    [HttpGet("users")]
+    public async Task<IActionResult> GetUsers()
+    {
+        var users = await _userService.GetAll();
+        return Ok(users);
     }
 }

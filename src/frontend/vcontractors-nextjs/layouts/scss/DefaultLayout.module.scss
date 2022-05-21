@@ -1,0 +1,6 @@
+@import '/assets/scss/colors';
+
+.main {
+    background-color: $bg-color;
+    height: calc(100vh - 230px);
+}

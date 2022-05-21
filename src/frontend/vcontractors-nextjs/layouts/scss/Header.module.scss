@@ -1,0 +1,21 @@
+@import '/assets/scss/colors';
+
+.header {
+    background: $primary-color;
+    height: 100px;
+    .headerContainer {
+        height: 100%;
+        .grid {
+            height: 100% !important;
+            .logo {
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                color: $white-color;
+                font-size: 25px;
+                letter-spacing: 5px;
+                font-weight: bold;
+            }
+        }
+    }
+}
