@@ -24,7 +24,7 @@ namespace vContractors.Infrastructure.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("vContractors.Domain.Entitties.Projects.Project", b =>
+            modelBuilder.Entity("vContractors.Domain.Entities.Projects.Project", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

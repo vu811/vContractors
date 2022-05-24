@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Identity;
 using vContractors.Infrastructure;
 using vContractors.Infrastructure.Identity;
 using vContractors.Infrastructure.Data;
-using vContractors.WebAPI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using vContractors.Domain.Entitties.Identity;
+using vContractors.Domain.Entities.Identity;
 using vContractors.WebAPI.Configuration;
+using vContractors.Application.Models.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,6 +81,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(x => x
+.SetIsOriginAllowed(origin => true)
+.AllowAnyMethod()
+.AllowAnyHeader()
+.AllowCredentials());
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

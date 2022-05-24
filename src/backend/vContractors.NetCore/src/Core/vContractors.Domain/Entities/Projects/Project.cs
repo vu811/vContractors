@@ -1,4 +1,4 @@
-﻿namespace vContractors.Domain.Entitties.Projects;
+﻿namespace vContractors.Domain.Entities.Projects;
 
 public class Project : BaseEntity
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using vContractors.Domain.Entitties.Identity;
+using vContractors.Domain.Entities.Identity;
 
 namespace vContractors.Infrastructure.Identity;
 

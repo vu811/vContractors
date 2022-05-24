@@ -42,9 +42,14 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : class
         throw new NotImplementedException();
     }
 
-    public Task UpdateAsync(T entity)
+    public async Task<int> SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        return await _dbContext.SaveChangesAsync();
+    }
+
+    public void Update(T entity)
+    {
+       _dbContext.Update(entity);
     }
 
     public Task UpdateRange(IEnumerable<T> entities)

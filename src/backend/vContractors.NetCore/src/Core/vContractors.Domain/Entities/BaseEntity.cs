@@ -1,4 +1,4 @@
-﻿namespace vContractors.Domain.Entitties;
+﻿namespace vContractors.Domain.Entities;
 
 public abstract class BaseEntity
 {

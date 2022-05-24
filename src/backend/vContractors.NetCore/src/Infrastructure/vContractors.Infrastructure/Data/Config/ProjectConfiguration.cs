@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using vContractors.Domain.Entitties.Projects;
+using vContractors.Domain.Entities.Projects;
 
 namespace vContractors.Infrastructure.Data.Config
 {
