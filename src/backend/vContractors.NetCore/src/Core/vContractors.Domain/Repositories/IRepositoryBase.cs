@@ -1,4 +1,4 @@
-﻿namespace vContractors.Application.Interfaces;
+﻿namespace vContractors.Domain.Repositories;
 
 public interface IRepositoryBase<T> : IReadRepositoryBase<T> where T : class
 {

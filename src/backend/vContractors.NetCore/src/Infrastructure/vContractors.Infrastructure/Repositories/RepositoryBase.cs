@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using vContractors.Application.Interfaces;
+using vContractors.Domain.Repositories;
 
-namespace vContractors.Infrastructure.Data;
+namespace vContractors.Infrastructure.Repositories;
 
 public class RepositoryBase<T> : IRepositoryBase<T> where T : class
 {

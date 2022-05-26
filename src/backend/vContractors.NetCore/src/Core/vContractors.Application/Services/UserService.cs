@@ -8,26 +8,27 @@ using vContractors.Application.Interfaces;
 using vContractors.Application.Models.Settings;
 using vContractors.Application.Models.Users;
 using vContractors.Domain.Entities.Identity;
+using vContractors.Domain.Repositories;
 
 namespace vContractors.Application.Services;
 
 public class UserService : IUserService
 {
-    private readonly IRepository<User> _userRepository;
+    private readonly IIdentityUnitOfWork _unitOfWork;
     private readonly AppSettings _appSettings;
 
     public UserService(
-        IRepository<User> userRepository,
+       IIdentityUnitOfWork unitOfWork,
         IOptions<AppSettings> appSettings)
     {
-        _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
         _appSettings = appSettings.Value;
     }
 
     #region Public Methods
     public async Task<List<User>> GetAll()
     {
-        return await _userRepository.GetAllAsync();
+        return await _unitOfWork.Users.GetAllAsync();
     }
 
     public async Task<LoginResponse?> LoginAsync(LoginRequest request, string ipAddress)
@@ -40,8 +41,8 @@ public class UserService : IUserService
         var refreshToken = GenerateRefreshToken(ipAddress);
 
         user.RefreshTokens.Add(refreshToken);
-        _userRepository.Update(user);
-        await _userRepository.SaveChangesAsync();
+        _unitOfWork.Users.Update(user);
+        await _unitOfWork.SaveChangesAsync();
         return new LoginResponse { Id = user.Id, UserName = user.UserName, Token = jwtToken };
     }
 
